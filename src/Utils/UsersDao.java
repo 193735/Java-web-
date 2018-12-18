@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import chapter09.JDBCUtils;
-import chapter09.User;
 
 
 

@@ -44,32 +44,34 @@ public class add extends HttpServlet {
 		String email = request.getParameter("email");
 		String sex = request.getParameter("sex");
 	    UsersDao ud = new UsersDao();
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
+	    
+		User user = ud.find(phonenumber);
+		if(user!=null) {
+			 out.println("手机号已注册，请重新输入手机号");
+		}else {
+		User users = new User();
+		users.setUsername(username);
+		users.setPassword(password);
+		users.setSex(sex);
+		users.setEmail(email);
+		users.setPhoneNumber(phonenumber);
+ 	    boolean c = ud.insert(users);
+ 	     if(c) {
+ 	    	 System.out.println("注册成功");
+ 	     }else {
+ 	    	 System.out.println("注册失败");
+ 	     }
+ 	   response.sendRedirect("http://localhost:8080/Practical/javawebTraining/login.html");
 		
-		user.setSex(sex);
-		user.setEmail(email);
+		}
 		
-		UsersDao usersDao = new UsersDao();
-	       ArrayList <User> list = usersDao.findAll();
-	       for(int i = 0; i<list.size();i++) {
-	    	if(phonenumber.equals(list.get(i).getPhoneNumber())){   
-	    		a=true;
-	    		break;
-	    	}
-	       }
-	       if(a) {
-	    	   System.out.println(c);
-	    	   out.println("手机号已注册，请重新输入手机号");
-	       }else { 
-	    	   user.setPhoneNumber(phonenumber);
-	    	   ud.insert(user);
-	    	   response.sendRedirect("http://localhost:8080/Practical/login.html");
+		
+		
+	    	 
 		}
 	       		
 		
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

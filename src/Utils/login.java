@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import chapter09.User;
-import chapter09.UsersDao;
 
 /**
  * Servlet implementation class login
@@ -42,7 +40,8 @@ public class login extends HttpServlet {
 		UsersDao usersDao = new UsersDao();
 	       ArrayList <User> list = usersDao.findAll();
 	       for(int i = 0; i<list.size();i++) {
-	    	if(phonenumber.equals(list.get(i).getPhoneNumber())&&password.equals(list.get(i).getPassword())) {
+	    	if(phonenumber.equals(list.get(i).getPhoneNumber())
+	    			&&password.equals(list.get(i).getPassword())) {
 	    		a = true;
 	    		break;
 	    	}else {
@@ -51,9 +50,12 @@ public class login extends HttpServlet {
 	       }
 	       if(a) {
 	    	   System.out.println("µÇÂ¼³É¹¦");
+	    	   response.sendRedirect("http://localhost:8080/Practical/javawebTraining/home.html");
 	       }else {
 	    	   System.out.println("µÇÂ¼Ê§°Ü");
 	       }
+	 	 
+
 	}
 
 	/**

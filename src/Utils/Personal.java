@@ -13,9 +13,16 @@ public class Personal {
 	private String sxzy;
 	private String height;
 	private String weight;
+	private String married;
 	
 	public String getCity() {
 		return city;
+	}
+	public String getMarried() {
+		return married;
+	}
+	public void setMarried(String married) {
+		this.married = married;
 	}
 	public void setCity(String city) {
 		this.city = city;
