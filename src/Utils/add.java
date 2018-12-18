@@ -37,41 +37,36 @@ public class add extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		phonenumber=request.getParameter("phone");
 		String email = request.getParameter("email");
 		String sex = request.getParameter("sex");
-	    UsersDao ud = new UsersDao();
-	    
-		User user = ud.find(phonenumber);
-		if(user!=null) {
-			 out.println("手机号已注册，请重新输入手机号");
-		}else {
-		User users = new User();
-		users.setUsername(username);
-		users.setPassword(password);
-		users.setSex(sex);
-		users.setEmail(email);
-		users.setPhoneNumber(phonenumber);
- 	    boolean c = ud.insert(users);
- 	     if(c) {
- 	    	 System.out.println("注册成功");
- 	     }else {
- 	    	 System.out.println("注册失败");
- 	     }
- 	   response.sendRedirect("http://localhost:8080/Practical/javawebTraining/login.html");
-		
-		}
-		
-		
-		
-	    	 
-		}
-	       		
-		
-	
+	   UsersDao ud = new UsersDao();
+	   
+	   
+			User user = ud.find(phonenumber);
+			if(user!=null) {
+			System.out.println("手机号已注册，请重新输入手机号");
+			
+			}else {
+	            User users = new User();
+	            InformationDao informationDao = new  InformationDao();
+				Personal personal = new Personal();
+				personal.setPhone(phonenumber);
+				informationDao.insert(personal);
+				personal.setPhone(phonenumber);
+				users.setPhoneNumber(phonenumber);
+			    users.setUsername(username);
+				users.setPassword(password);
+				users.setSex(sex);
+				users.setEmail(email);
+			    ud.insert(users);
+			    response.sendRedirect("http://localhost:8080/Practical/login.html");
+			    
+			}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

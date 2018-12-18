@@ -13,11 +13,10 @@ public static Connection getConnection() throws SQLException, ClassNotFoundExcep
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	String url = "jdbc:mysql://localhost:3306/jdbc"
       		+ "?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-      String user = "root";
-      String password = "123456";
+    String user = "root";
+    String password = "123456";
     Connection  conn = DriverManager.getConnection(url,user,password);
-      
-	return conn;
+    return conn;
 	
 }
 private static void release(Statement stmt,Connection conn) {

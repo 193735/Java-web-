@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 
 
+
 public class InformationDao {
 	public boolean insert(Personal personal) {		
 		Connection conn =null;

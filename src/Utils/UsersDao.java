@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 
 
-
 public class UsersDao {
 	public boolean insert(User user) {		
 		Connection conn =null;
@@ -75,7 +74,7 @@ public class UsersDao {
 			conn = JDBCUtils.getConnection();
 			//获取Statement对象
 			stmt = conn.createStatement();
-			String sql="SELECT * FROM user WHERE phone = " +phone;
+			String sql="SELECT * FROM personalinformation WHERE phoneNumber = '"+phone+"'";
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				User user = new User();
