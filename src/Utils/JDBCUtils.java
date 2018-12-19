@@ -19,7 +19,7 @@ public static Connection getConnection() throws SQLException, ClassNotFoundExcep
     return conn;
 	
 }
-private static void release(Statement stmt,Connection conn) {
+public static void release(Statement stmt,Connection conn) {
 	if(stmt!=null) {
 		try {
 			stmt.close();
@@ -40,7 +40,7 @@ private static void release(Statement stmt,Connection conn) {
 		conn = null;
 	}
 }
-static void release(Statement stmt,Connection conn,ResultSet rs) {
+public static void release(Statement stmt,Connection conn,ResultSet rs) {
 	if(rs!=null) {
 		
 		try {

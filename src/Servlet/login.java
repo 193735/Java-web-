@@ -1,4 +1,4 @@
-package Utils;
+package Servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import Dao.UsersDao;
+import enity.User;
 
 
 /**
@@ -51,14 +54,10 @@ public class login extends HttpServlet {
 	    	}
 	       }
 	       if(a) {
-	    	
-	    	  HttpSession session = request.getSession();
+              HttpSession session = request.getSession();
 	    	  session.setAttribute("phone", phonenumber);
-	    	 response.sendRedirect("http://localhost:8080/Practical/javawebTraining/home.html"); 
-	    	 //.setAttribute("list", phonenumber);
-	    	  //request.getRequestDispatcher("/mainpage").forward(request, response);
-	    
-	       }else {
+	    	  response.sendRedirect("http://localhost:8080/Practical/javawebTraining/home.html"); 
+}else {
 	    	   System.out.println("µÇÂ¼Ê§°Ü");
 	       }
 	}

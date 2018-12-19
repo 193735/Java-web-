@@ -1,4 +1,4 @@
-package Utils;
+package enity;
 
 public class User {
 private String username;

@@ -1,4 +1,4 @@
-package Utils;
+package enity;
 
 public class Personal {
 	private String name;
@@ -14,7 +14,14 @@ public class Personal {
 	private String height;
 	private String weight;
 	private String married;
+	private String img;
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public String getMarried() {
 		return married;
 	}

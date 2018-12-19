@@ -1,9 +1,12 @@
-package Utils;
+package Dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+
+import Utils.JDBCUtils;
+import enity.Personal;
 
 
 
@@ -20,9 +23,9 @@ public class InformationDao {
 			stmt = conn.createStatement();
 			//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
-			String sql1 = "INSERT INTO personalinformation (name,birthday,sex,phoneNumber,city,Email,company,money,byyx,sxzy,height,weight,married) VALUES"
+			String sql1 = "INSERT INTO personalinformation (name,birthday,sex,phoneNumber,city,Email,company,money,byyx,sxzy,height,weight,married,img) VALUES"
 					+ "('"+personal.getName()+"','"+
-			personal.getBirthday()+"','"+personal.getSex()+"','"+personal.getPhone()+"','"+personal.getCity()+"','"+personal.getEmail()+"','"+personal.getCompany()+"','"+personal.getMoney()+"','"+personal.getByyx()+"','"+personal.getSxzy()+"','"+personal.getHeight()+"','"+personal.getWeight()+"','"+personal.getMarried()+"')"; 
+			personal.getBirthday()+"','"+personal.getSex()+"','"+personal.getPhone()+"','"+personal.getCity()+"','"+personal.getEmail()+"','"+personal.getCompany()+"','"+personal.getMoney()+"','"+personal.getByyx()+"','"+personal.getSxzy()+"','"+personal.getHeight()+"','"+personal.getWeight()+"','"+personal.getMarried()+"','"+personal.getImg()+"')"; 
             int num =stmt.executeUpdate(sql1);
 					if(num >0) {
 						return true;
@@ -61,6 +64,7 @@ public class InformationDao {
 				personal.setMoney(rs.getString("money"));
 				personal.setSxzy(rs.getString("sxzy"));
 				personal.setMarried(rs.getString("married"));
+				personal.setImg(rs.getString("img"));
 				return personal;
 			}
 			return null;
@@ -86,7 +90,7 @@ public class InformationDao {
 			+"',company='"+personal.getCompany()+"',sex='"+personal.getSex()+"',height='"+personal.getHeight()+
 			"',weight='"+personal.getWeight()+"',byyx='"+personal.getByyx()+"',money='"+personal.getMoney()+
 			"',sxzy='"+personal.getSxzy()+
-			"',married='"+personal.getMarried()
+			"',married='"+personal.getMarried()+"',img='"+personal.getImg()
 			+"'where phoneNumber ='"+personal.getPhone()+"'";
 		   int num = stmt.executeUpdate(sql);
 			if (num >0) {
