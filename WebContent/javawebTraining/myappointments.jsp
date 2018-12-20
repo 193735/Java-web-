@@ -42,18 +42,36 @@
   String phone = (String)Session.getAttribute("phone");
   AppointmentDao appointmentDao = new AppointmentDao();
   ArrayList<Appointment> list = appointmentDao.find(phone);
- 
+
    %>
-   <% 
+   <%
 InformationDao informationDao = new InformationDao();
 Personal  personal = informationDao.find(phone);
 %>
 </head>
-<body>
+<body background="img/1111.jpg">
+<div class="divmain">
 
+    <div id="img-tit">
+        <a href = "#">
+            <img src="http://images2.jyimg.com/msn/index_pic/jy_common_1542875303.jpeg" alt="世纪佳缘" width="200" height="60" border ="0"/>
+        </a>
+    </div>
+
+  
+</div>
+<br>
+<div id="divmenu">
+       <a href="Main.jsp">首页</a>
+    <a href="myappointments.jsp">我的约会</a>
+    <a href="publishAppointment.html">发布约会</a>
+    <a href="personalinformation.jsp">个人中心</a>
+    <a href="#">俱乐部</a>
+    <a href="#">活动</a>
+    <a href="#">晒幸福</a>
+</div>
+<br>
          <%
-        
-       
          	for(int i=0;i<list.size();i++){
                  Appointment yh=(Appointment)list.get(i);
          %>

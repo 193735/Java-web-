@@ -26,7 +26,7 @@ public class add extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        private static boolean a;
        private static String c;
-       private static String phonenumber;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,18 +42,16 @@ public class add extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-
+        PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		phonenumber=request.getParameter("phone");
+		 String phonenumber=request.getParameter("phone");
 		String email = request.getParameter("email");
 		String sex = request.getParameter("sex");
-	   UsersDao ud = new UsersDao();
-	   
-	   
-			User user = ud.find(phonenumber);
+	    UsersDao ud = new UsersDao();
+	    User user = ud.find(phonenumber);
 			if(user!=null) {
-			System.out.println("手机号已注册，请重新输入手机号");
+				out.print("<script language='javascript'>alert('用户名或密码错误!')</script>");
 			
 			}else {
 	            User users = new User();
@@ -61,14 +59,13 @@ public class add extends HttpServlet {
 				Personal personal = new Personal();
 				personal.setPhone(phonenumber);
 				informationDao.insert(personal);
-				personal.setPhone(phonenumber);
 				users.setPhoneNumber(phonenumber);
 			    users.setUsername(username);
 				users.setPassword(password);
 				users.setSex(sex);
 				users.setEmail(email);
 			    ud.insert(users);
-			    response.sendRedirect("http://localhost:8080/Practical/login.html");
+			    response.sendRedirect("./javawebTraining/login.html ");
 			    
 			}
 	}

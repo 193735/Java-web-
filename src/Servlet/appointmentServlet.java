@@ -38,6 +38,7 @@ public class appointmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
+		
 		request.setCharacterEncoding("UTF-8");
 		String theme = request.getParameter("item");
 		String fee = request.getParameter("gender");
@@ -54,8 +55,10 @@ public class appointmentServlet extends HttpServlet {
         appointment.setSate(sate);
         appointment.setDescription(description);
         appointment.setPhoneNumber(phone);
-		appointmentDao.insert(appointment);
-	        
+		boolean a =   appointmentDao.insert(appointment);
+		if(a) {
+		response.sendRedirect("http://localhost:8080/Practical/javawebTraining/myappointments.jsp"); 
+		}
 }
 
 	/**

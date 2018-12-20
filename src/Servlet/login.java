@@ -54,9 +54,10 @@ public class login extends HttpServlet {
 	    	}
 	       }
 	       if(a) {
+	    	  
               HttpSession session = request.getSession();
 	    	  session.setAttribute("phone", phonenumber);
-	    	  response.sendRedirect("http://localhost:8080/Practical/javawebTraining/home.html"); 
+	    	  response.sendRedirect("./javawebTraining/Main.jsp"); 
 }else {
 	    	   System.out.println("µÇÂ¼Ê§°Ü");
 	       }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import Utils.JDBCUtils;
 import enity.Appointment;
+import enity.User;
 
 
  
@@ -39,6 +40,37 @@ public class AppointmentDao {
 			JDBCUtils.release(stmt,conn,rs);
 		}
 		return false;
+	}
+	public ArrayList<Appointment> findAll(){
+		Connection conn =null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Appointment> list=new ArrayList<Appointment>();
+		try {
+			//获取数据连接
+			conn = JDBCUtils.getConnection();
+			//获取Statement对象
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM appointmentinformation";
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				Appointment appointment = new Appointment();
+				appointment.setFee(rs.getString("fee"));
+				appointment.setDescription(rs.getString("description"));
+				appointment.setPhoneNumber(rs.getString("phoneNumber"));
+				appointment.setSate(rs.getString("sate"));
+				appointment.setTime(rs.getString("time"));
+				appointment.setTheme(rs.getString("theme"));
+			    
+				list.add(appointment);
+			}
+			return list;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtils.release( stmt, conn,rs);
+		}
+		return null;
 	}
 	public ArrayList<Appointment> find(String phone) {
 		Connection conn =null;

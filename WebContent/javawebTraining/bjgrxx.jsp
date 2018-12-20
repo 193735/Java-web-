@@ -1,9 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <%@ page import="Dao.InformationDao"%>
+<%@ page import="enity.Personal"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%HttpSession Session = request.getSession();
+String phone = (String)Session.getAttribute("phone");
+ %>
+<% 
+InformationDao informationDao = new InformationDao();
+Personal  personal = informationDao.find(phone);
+%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
  <style type="text/css">
         .con4 {
@@ -86,17 +95,18 @@
 <div class="t">
 <div class="div1">
 <div class="con4">
+ <form action="/Practical/revise" method="post" enctype="multipart/form-data">
     <canvas id="cvs" width="200" height="200"></canvas>
     <span class="btn upload">上传头像<input type="file"name = "headImage" class="upload_pic" id="upload" /></span>
 </div>
 </div>
 <div class="div2">
-    <form action="/Practical/revise" method="post">
+   
         <table border="0" cellpadding="5" cellspacing="0" align="center">
             <tr height="40" >
                 <td width="100" align="right">姓名：</td>
                 <td>
-                    <input type="text" name="username" placeholder="请输入姓名"style="width:200px">
+                    <input type="text" name="username" value="<%=personal.getName()%>"style="width:200px">
                 </td>
             <tr height="40">
                 <td width="100" align="right">性别：</td>
@@ -108,19 +118,19 @@
             <tr height="40" >
                 <td width="10" align="right">身高：</td>
                 <td>
-                    <input type="text" name="height"  placeholder="请输入身高" style="width:200px">
+                    <input type="text" name="height"  value="<%=personal.getHeight()%>"style="width:200px">
                 </td>
             </tr>
             <tr height="40">
                 <td width="50" align="right">体重：</td>
                 <td>
-                    <input type="text" name="weight" placeholder="请输入体重"style="width:200px">
+                    <input type="text" name="weight" value="<%=personal.getWeight()%>"style="width:200px">
                 </td>
             </tr>
             <tr height="40">
                 <td width="100" align="right">生日：</td>
                 <td>
-                    <input type="text" name="birthday" placeholder="请输入生日"style="width:200px">
+                    <input type="text" name="birthday" value="<%=personal.getBirthday()%>"style="width:200px">
                 </td>
             </tr>
             <tr height="40">
@@ -134,38 +144,38 @@
             <tr height="40" >
                 <td width="100" align="right">手机号：</td>
                 <td>
-                    <input type="text" name="phoneNumber" placeholder="请输入身高"style="width:200px">
+                    <input type="text" name="phoneNumber" value="<%=personal.getPhone()%>"style="width:200px">
                 </td>
             <tr height="40" >
                 <td width="100" align="right">所在地：</td>
                 <td>
-                    <input type="text" name="city" placeholder="请输入所在地"style="width:200px">
+                    <input type="text" name="city" value="<%=personal.getCity()%>"style="width:200px">
                 </td>
             <tr height="40" >
                 <td width="100" align="right">毕业院校：</td>
                 <td>
-                    <input type="text" name="byyx" placeholder="请输入毕业院校"style="width:200px">
+                    <input type="text" name="byyx" value="<%=personal.getByyx()%>"style="width:200px">
                 </td>
             <tr height="40" >
                 <td width="100" align="right">所学专业：</td>
                 <td>
-                    <input type="text" name="sxzy" placeholder="请输入所学专业" style="width:200px">
+                    <input type="text" name="sxzy" value="<%=personal.getSxzy()%>" style="width:200px">
                 </td>
             <tr height="40" >
                 <td width="100" align="right">公司：</td>
                 <td>
-                    <input type="text" name="company"placeholder="请输入就职公司" style="width:200px">
+                    <input type="text" name="company"value="<%=personal.getCompany()%>"style="width:200px">
                 </td>
             <tr height="40" >
                 <td width="100" align="right">年收入：</td>
                 <td>
-                    <input type="text" name="money"placeholder="请输入年收入" style="width:200px">
+                    <input type="text" name="money"value="<%=personal.getMoney()%>" style="width:200px">
                 </td>
             </tr>
               <tr height="40" >
                 <td width="100" align="right">电子邮箱：</td>
                 <td>
-                    <input type="text" name="email"placeholder="请输入年收入" style="width:200px">
+                    <input type="text" name="email"value="<%=personal.getEmail()%>" style="width:200px">
                 </td>
             </tr>
             <tr>

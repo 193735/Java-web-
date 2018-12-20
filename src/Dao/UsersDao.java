@@ -77,7 +77,7 @@ public class UsersDao {
 			conn = JDBCUtils.getConnection();
 			//获取Statement对象
 			stmt = conn.createStatement();
-			String sql="SELECT * FROM personalinformation WHERE phoneNumber = '"+phone+"'";
+			String sql="SELECT * FROM user WHERE phoneNumber = '"+phone+"'";
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				User user = new User();

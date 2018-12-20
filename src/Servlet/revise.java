@@ -40,10 +40,10 @@ public class revise extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		Part  part = request.getPart("headImage"); //<input type="file" name="headImage">
+		
 		 
 		InformationDao information = new InformationDao();
-	    //ServletContext context = this.getServletContext();
+	    
 	    HttpSession Session = request.getSession();
         String phone = (String)Session.getAttribute("phone");
         String marry = request.getParameter("marry");
@@ -72,6 +72,7 @@ public class revise extends HttpServlet {
 		personal.setWeight(weight);
 		personal.setMoney(money);
 		personal.setSxzy(sxzy);
+		Part  part = request.getPart("headImage"); //<input type="file" name="headImage">
        if(part != null && part.getContentType().contains("image")) {
             // 1.1 获取该web在服务器上的物理位置
             String path = getServletContext().getRealPath("/") + "images";
@@ -93,7 +94,7 @@ public class revise extends HttpServlet {
 			a  =  information.update(personal);
 		}
 		if(a) {
-			response.sendRedirect("javawebTraining/personalinformation.jsp"); 
+			response.sendRedirect("http://localhost:8080/Practical/javawebTraining/personalinformation.jsp"); 
 		}else {
 			System.out.println("修改失败");
 		}
